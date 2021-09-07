@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Users from './component/users'
+import R2D2 from './component/r2d2'
 
 function App() {
   console.log('@App()');
@@ -21,6 +22,7 @@ function App() {
         </a>
       </header>
       <Users />
+      <R2D2 />
     </div>
   );
 }
