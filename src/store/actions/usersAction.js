@@ -10,10 +10,10 @@ export const getUsers = () => async dispatch => {
             payload: res.data
         })
     }
-    catch(e){
+    catch(error){
         dispatch( {
             type: USERS_ERROR,
-            payload: console.log(e),
+            payload: error,
         })
     }
 

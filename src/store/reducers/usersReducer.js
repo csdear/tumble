@@ -1,4 +1,5 @@
-import {GET_USERS} from '../types'
+
+import {GET_USERS, USERS_ERROR} from '../types'
 
 const initialState = {
     users:[],
@@ -16,6 +17,11 @@ export default function userReducer(state = initialState, action){
             loading:false
 
         }
+        case USERS_ERROR:
+            return{
+                loading: false,
+                error: action.payload
+            }
         default: return state
     }
 
