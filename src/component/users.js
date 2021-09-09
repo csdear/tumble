@@ -11,7 +11,9 @@ const Users = () => {
         }, [dispatch])
     return (
         <>
-            {loading ? "Loading..." : error ? error.message : users.map(u => <h3>{u.name}</h3>)}
+            {loading ? "Loading..." : error ? error.message : users.map(u => <div  key={u.id}>
+                <h3>{u.name}</h3>
+            </div>)}
         </>
     )
 }
