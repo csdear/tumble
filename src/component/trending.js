@@ -4,7 +4,7 @@ import {getTrending} from '../store/actions/trendingAction'
 
 const Trending = () => {
     const dispatch = useDispatch()
-    const trendingList = useSelector(state => state.trending)
+    const trendingList = useSelector(state => state.trendingList)
     console.log('trendingList', trendingList);
     const {loading, error, trending} = trendingList
     useEffect(() => {
