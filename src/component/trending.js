@@ -10,7 +10,6 @@ const Trending = () => {
     const dispatch = useDispatch()
     const trendingList = useSelector(state => state.trendingList)
     console.log('trendingList', trendingList);
-    // const blah = "HAAAAAAY";
     const {loading, error, trending} = trendingList;
     useEffect(() => {
         dispatch(getTrending())
@@ -18,16 +17,18 @@ const Trending = () => {
     return (
         <>
             {loading ? "Loading..." : error ? error.message :
-                <div className="trd container">
-                    {trending.results.map(t =>
-                    <div key={t.id}>
+                <div className="trd container-flex">
+                <div className='col-lg-12'>
+                <div className='row'>
+                {trending.results.map(t =>
+                    <div className='col-sm-6 col-md-4 col-sm-4' key={t.id}>
                         {/*<h4>{t.name ? t.name : t.original_title}</h4>
                         <img src={"https://www.themoviedb.org/t/p/w220_and_h330_face" + t.poster_path} alt='test' />
                         <small>id:{t.id}</small>
                         <Button variant="primary">Primary</Button>{' '}
                         */}
-                        <div className="row">
-                        <Card style={{ width: '18rem' }}>
+
+                        <Card style={{ width: '24rem' }}>
                         <Card.Img variant="top" src={"https://www.themoviedb.org/t/p/w220_and_h330_face" + t.poster_path} />
                         <Card.Body>
                           <Card.Title>{t.name ? t.name : t.original_title}</Card.Title>
@@ -38,10 +39,10 @@ const Trending = () => {
                           <Button variant="primary">DETAILS</Button>
                         </Card.Body>
                       </Card>
-                      </div>
-
                     </div>
                     )}
+                </div>
+                </div>
                 </div>
             }
         </>

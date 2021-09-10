@@ -1,4 +1,14 @@
 
 .trd {
     background-color: lightcoral;
+    margin-left: 50px;
+    margin-top: 25px;
+}
+
+.card {
+    margin-bottom: 25px;
+}
+
+.card-title {
+    height: 4rem;
 }
