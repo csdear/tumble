@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Users from './component/users'
 import Trending from './component/trending'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   console.log('@App()');
