@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getTrending} from '../store/actions/trendingAction'
-import './styles/trending.css';
+import './styles/MovieMain.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-const Trending = () => {
+const Trending = (props) => {
+    console.log('@MovieMain');
+    console.log('props', props);
     const dispatch = useDispatch()
     const trendingList = useSelector(state => state.trendingList)
     console.log('trendingList', trendingList);
