@@ -1,20 +1,46 @@
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getTrending} from '../store/actions/trendingAction'
+import {getTopRated} from '../store/actions/topRatedAction'
 import './styles/MovieMain.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-const Trending = (props) => {
+const MovieMain = (props) => {
     console.log('@MovieMain');
-    console.log('props', props);
+    const selection = props.selection;
     const dispatch = useDispatch()
     const trendingList = useSelector(state => state.trendingList)
-    console.log('trendingList', trendingList);
-    const {loading, error, trending} = trendingList;
+    const topRatedList = useSelector(state => state.topRatedList)
+
+
+    let loading;
+    let error;
+    let list;
+
+    switch (selection) {
+        case 'trending':
+          loading = trendingList.loading;
+          error = trendingList.error;
+          list = trendingList.list;
+          break;
+        case 'topRated':
+          loading = topRatedList.loading;
+          error = topRatedList.error;
+          list = topRatedList.list;
+          break;
+        default:
+            loading = trendingList.loading;
+            error = trendingList.error;
+            list = trendingList.list;
+      }
+
     useEffect(() => {
         dispatch(getTrending())
+        }, [dispatch])
+    useEffect(() => {
+        dispatch(getTopRated())
         }, [dispatch])
     return (
         <>
@@ -22,14 +48,8 @@ const Trending = (props) => {
                 <div className="trd container-flex">
                 <div className='col-lg-12'>
                 <div className='row'>
-                {trending.results.map(t =>
+                {list.results.map(t =>
                     <div className='col-sm-6 col-md-4 col-sm-4' key={t.id}>
-                        {/*<h4>{t.name ? t.name : t.original_title}</h4>
-                        <img src={"https://www.themoviedb.org/t/p/w220_and_h330_face" + t.poster_path} alt='test' />
-                        <small>id:{t.id}</small>
-                        <Button variant="primary">Primary</Button>{' '}
-                        */}
-
                         <Card style={{ width: '24rem' }}>
                         <Card.Img variant="top" src={"https://www.themoviedb.org/t/p/w220_and_h330_face" + t.poster_path} />
                         <Card.Body>
@@ -51,4 +71,4 @@ const Trending = (props) => {
     )
 }
 
-export default Trending
+export default MovieMain

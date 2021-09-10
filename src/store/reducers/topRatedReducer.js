@@ -1,20 +1,20 @@
-import {GET_TRENDING, TRENDING_ERROR} from '../types'
+import {GET_TOPRATED, TOPRATED_ERROR} from '../types'
 const initialState = {
-    trending:[],
+    topRated:[],
     loading:true
 }
 
-export default function trendingReducer(state = initialState, action){
+export default function topRatedReducer(state = initialState, action){
 
     switch(action.type){
 
-        case GET_TRENDING:
+        case GET_TOPRATED:
         return {
             ...state,
             loading: false,
             list: action.payload,
         }
-        case TRENDING_ERROR:
+        case TOPRATED_ERROR:
             return{
                 loading: false,
                 error: action.payload
