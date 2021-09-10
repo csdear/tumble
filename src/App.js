@@ -24,6 +24,9 @@ function App() {
       </header>
       <Button onClick={() => {setMovieFilter('trending');}} variant="warning">Trending</Button>
       <Button onClick={() => {setMovieFilter('topRated');}} variant="danger">Top Rated</Button>
+      <Button onClick={() => {setMovieFilter('nowPlaying');}} variant="success">Now Playing</Button>
+      <Button onClick={() => {setMovieFilter('popular');}} variant="info">Popular</Button>
+
       <MovieMain selection={state.data} />
     </div>
   );

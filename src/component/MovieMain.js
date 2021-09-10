@@ -2,6 +2,8 @@ import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getTrending} from '../store/actions/trendingAction'
 import {getTopRated} from '../store/actions/topRatedAction'
+import {getNowPlaying} from '../store/actions/nowPlayingAction'
+import {getPopular} from '../store/actions/popularAction'
 import './styles/MovieMain.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -9,16 +11,20 @@ import Card from 'react-bootstrap/Card';
 
 const MovieMain = (props) => {
     console.log('@MovieMain');
+    console.log('PROPS',props);
     const selection = props.selection;
     const dispatch = useDispatch()
     const trendingList = useSelector(state => state.trendingList)
     const topRatedList = useSelector(state => state.topRatedList)
+    const nowPlayingList = useSelector(state => state.nowPlayingList)
+    const popularList = useSelector(state => state.popularList)
 
 
     let loading;
     let error;
     let list;
 
+    console.log('current selection', selection);
     switch (selection) {
         case 'trending':
           loading = trendingList.loading;
@@ -29,6 +35,18 @@ const MovieMain = (props) => {
           loading = topRatedList.loading;
           error = topRatedList.error;
           list = topRatedList.list;
+          break;
+        case 'nowPlaying':
+          console.log('case now playing');
+          loading = nowPlayingList.loading;
+          error = nowPlayingList.error;
+          list = nowPlayingList.list;
+          break;
+        case 'popular':
+          console.log('case popular');
+          loading = popularList.loading;
+          error = popularList.error;
+          list = popularList.list;
           break;
         default:
             loading = trendingList.loading;
@@ -41,6 +59,12 @@ const MovieMain = (props) => {
         }, [dispatch])
     useEffect(() => {
         dispatch(getTopRated())
+        }, [dispatch])
+    useEffect(() => {
+        dispatch(getNowPlaying())
+        }, [dispatch])
+    useEffect(() => {
+        dispatch(getPopular())
         }, [dispatch])
     return (
         <>
