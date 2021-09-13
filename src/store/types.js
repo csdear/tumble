@@ -12,3 +12,6 @@ export const NOWPLAYING_ERROR = 'NOWPLAYING_ERROR'
 
 export const GET_POPULAR = 'GET_POPULAR';
 export const POPULAR_ERROR = 'POPULAR_ERROR'
+
+export const GET_MOVIE = 'GET_MOVIE';
+export const GET_MOVIE_ERROR = 'GET_MOVIE_ERROR'
