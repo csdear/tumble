@@ -14,13 +14,17 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [showArea, setShowArea] = useState(true);
+  const [showSearchResults, setShowSearchResults] = useState(false);
 
   const search = async searchValue => {
-    console.log('HIT SEARCH function'); 
+    console.log('HIT SEARCH function');
     setLoading(true);
     setErrorMessage(null);
+    setShowSearchResults(true);
+    setShowArea(false);
 
-    try { 
+    try {
     const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=e8c08c56c215123455db90ff4f2ce7f4&language=en-US&page=1&query=${searchValue}`)
     .then(response => {
       console.log('AXIOS RESPONSE', response);
@@ -47,6 +51,8 @@ function App() {
 
   const setMovieFilter = (filterBy) => {
     setstate({filter: filterBy});
+    setShowArea(true);
+    setShowSearchResults(false);
   }
 
   const setMovieSearch = () => {
@@ -55,6 +61,7 @@ function App() {
     setstate({search: form['searchField'].value});
     // console.log('AAA', state.searchString);
   }
+
 
   return (
     <div className="App">
@@ -67,11 +74,12 @@ function App() {
       <Button onClick={() => {setMovieFilter('nowPlaying');}} variant="success">Now Playing</Button>
       <Button onClick={() => {setMovieFilter('popular');}} variant="info">Popular</Button>
       <div className="container"><h5>OR Search For A movie</h5>
-          
+
       </div>
       <Search search={search} />
-      
-      <div className="container-flex">
+
+      {showSearchResults ?
+      <div className="container-flex m-5">
       <div className='col-lg-12'>
       <div className='row'>
         {loading && !errorMessage ? (
@@ -86,7 +94,8 @@ function App() {
       </div>
       </div>
       </div>
-      <MovieMain props={state} />
+      : null}
+      {showArea ? <MovieMain props={state} /> : null}
     </div>
   );
 }
