@@ -105,7 +105,10 @@ const MovieMain = (props) => {
     useEffect(() => {
         dispatch(getPopular())
         }, [dispatch])
-
+    
+    const truncate = (str) => {
+      return str.length > 90 ? str.substring(0, 150) + "..." : str;
+    }
 
     return (
         <>
@@ -120,8 +123,7 @@ const MovieMain = (props) => {
                         <Card.Body>
                           <Card.Title>{t.name ? t.name : t.original_title}</Card.Title>
                           <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            {truncate(t.overview)}
                           </Card.Text>
                           <Button variant="primary">DETAILS</Button>
                         </Card.Body>

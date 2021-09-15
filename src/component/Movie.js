@@ -3,6 +3,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './styles/Movie.css';
 
+const truncate = (str) => {
+    return str.length > 90 ? str.substring(0, 150) + "..." : str;
+  }
 
 const Movie = ({ movie }) => {
   return (
@@ -12,8 +15,7 @@ const Movie = ({ movie }) => {
                         <Card.Body>
                           <Card.Title>{movie.name ? movie.name : movie.original_title}</Card.Title>
                           <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                          {truncate(movie.overview)}
                           </Card.Text>
                           <Button variant="primary">DETAILS</Button>
                         </Card.Body>
