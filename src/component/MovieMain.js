@@ -4,7 +4,7 @@ import {getTrending} from '../store/actions/trendingAction'
 import {getTopRated} from '../store/actions/topRatedAction'
 import {getNowPlaying} from '../store/actions/nowPlayingAction'
 import {getPopular} from '../store/actions/popularAction'
-import {searchMovies} from '../store/actions/searchAction'
+// import {searchMovies} from '../store/actions/searchAction'
 import './styles/MovieMain.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -27,6 +27,7 @@ const MovieMain = (props) => {
     const popularList = useSelector(state => state.popularList)
     const movieList = useSelector(state => state.movieList)
 
+    
 
 
 
@@ -82,10 +83,10 @@ const MovieMain = (props) => {
         console.log('|WE SEARCH|');
         console.log('search Exists');
         console.log('search is for : ', search);
-        dispatch(searchMovies(search));  //WORKS BUT INFINITE LOOP.
-        loading = movieList.loading;
-        error = movieList.error;
-        list = movieList.list;
+        // dispatch(searchMovies(search));  //WORKS BUT INFINITE LOOP.
+        // loading = movieList.loading;
+        // error = movieList.error;
+        // list = movieList.list;
       }
 
 
